@@ -1,0 +1,24 @@
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "mafredri/zsh-async", from:github, defer:0
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/key-bindings", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+zplug "lib/directories", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh, if:"hash git"
+zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
+zplug "~/.zsh", from:local
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+if ! zplug check --verbose; then
+    printf "Install zplug plugins? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(rbenv init -)"
