@@ -5,6 +5,10 @@ if [ -x /usr/local/bin/chef ]; then
   export PATH="/opt/chefdk/bin:$PATH"
 fi
 
+if [ -d /usr/local/opt/gnupg@2.1/bin ]; then
+  export PATH="/usr/local/opt/gnupg@2.1/bin:$PATH"
+fi
+
 # Load our AWS environment defaults and aliases
 export AWS_DEFAULT_PROFILE='personal'
 
@@ -14,16 +18,14 @@ _terraform_aws_profile() {
   export TF_VAR_aws_secret_key=$(aws configure get $1.aws_secret_access_key)
 }
 
-# Set some environment vars for working with Chef
-export CHEF_USER='tanderson' # Work account user is different than mac account
-export EDITOR='subl -w'
+export EDITOR='code -w'
 
 # Setup for Vagrant VMware development
 export VAGRANT_VMWARE_CLONE_DIRECTORY="$HOME/.vagrant.vm"
 export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 
 # We like to change our Project structure from time to time
-export DEVTLD="$HOME/Development"
+export DEVTLD="$HOME/Code"
 # Set GOPATH and PATH
 export GOPATH="$DEVTLD/go"
 export PATH="$PATH:$GOPATH/bin"
@@ -37,12 +39,25 @@ fi
 # Docker helper functions
 ##
 dmenv() {
-  eval $(docker-machine env $@)
+  machine="default"
+  if [[ $1 != "" ]]; then
+    machine=$1
+  fi
+  eval $(docker-machine env $machine)
   if [[ $? -eq 0 ]]; then
-    export RPROMPT="docker: $@"
+    export RPROMPT="docker: $machine"
   fi
 }
 
+chefenv() {
+  if [[ $1 == "llmhq" ]]; then
+    export CHEF_USER='tanderson'
+    export CHEF_ORG='llmhq'
+  else
+    unset CHEF_USER
+    unset CHEF_ORG
+  fi
+}
 ##
 # Pulled from the colors plugin found in oh-my-zsh
 ##
