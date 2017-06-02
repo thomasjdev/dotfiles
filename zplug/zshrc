@@ -7,7 +7,8 @@ zplug "lib/key-bindings", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 zplug "lib/directories", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, if:"hash git"
-zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
+zplug "zsh-users/zsh-completions", from:github
+zplug "zsh-users/zsh-syntax-highlighting", from:github
 zplug "~/.zsh", from:local
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
@@ -21,4 +22,3 @@ fi
 zplug load
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(rbenv init -)"

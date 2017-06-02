@@ -1,0 +1,34 @@
+[user]
+	name = Thomas Anderson
+	email = thomas@tjanderson.net
+	signingkey = 0xF482A73599B43272
+[alias]
+	a = add
+	br = branch
+	changes = log --oneline --reverse
+	ci = commit
+	co = checkout
+	info = config --list
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	sb = show-branch
+	st = status
+	tags = tag -n1 -1
+	workprofile = config user.email \"thomas.anderson@lakeshorelearning.com\"
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+[core]
+	excludesfile = /Users/thomas/.gitignore
+	editor = vim 
+	autocrlf = input
+[apply]
+	whitespace = nowarn
+[github]
+	user =
+	token =
+[push]
+	default = simple
+[commit]
+	gpgsign = false
