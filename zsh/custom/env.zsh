@@ -55,10 +55,5 @@ fi
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
-# Configure chefdk
-if [[ -d "/opt/chefdk" ]]; then
-    eval "$(chef shell-init zsh)"
-fi
-
 # Set Java to 1.8 instead of 9.0
 export JAVA_HOME=$(/usr/libexec/java_home -v '1.8')
