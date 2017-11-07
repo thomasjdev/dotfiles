@@ -1,0 +1,5 @@
+node_name: "thomas"
+server: "https://chef.designedforgood.co/organizations/designedforgood"
+validator: "designedforgood-validator"
+cookbook_copyright: "Thomas Anderson"
+cookbook_email: "thomas@tjanderson.net"
