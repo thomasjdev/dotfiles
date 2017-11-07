@@ -9,6 +9,7 @@ zplug "lib/directories", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, if:"hash git"
 zplug "zsh-users/zsh-completions", from:github
 zplug "zsh-users/zsh-syntax-highlighting", from:github
+zplug "zchee/go-zsh-completions", from:github
 zplug "~/.zsh", from:local
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 

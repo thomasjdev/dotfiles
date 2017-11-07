@@ -1,8 +1,3 @@
-# Load ChefDK for default ruby and other stuff
-if [ -x /usr/local/bin/chef ]; then
-  eval "$(chef shell-init zsh)"
-fi
-
 # Load our AWS environment defaults and aliases
 export AWS_DEFAULT_PROFILE='personal'
 
@@ -12,7 +7,7 @@ _terraform_aws_profile() {
   export TF_VAR_aws_secret_key=$(aws configure get $1.aws_secret_access_key)
 }
 
-export EDITOR='code -n -w'
+export EDITOR='subl -n -w'
 
 # Setup for Vagrant VMware development
 export VAGRANT_VMWARE_CLONE_DIRECTORY="$HOME/.vagrant.vm"
@@ -21,35 +16,13 @@ export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 # We like to change our Project structure from time to time
 export DEVTLD="$HOME/Code"
 
+# Allow gpg controlled SSH keys
+if [[ -x /usr/local/bin/gpgconf ]]; then
+  gpgconf --launch gpg-agent
+  export GPG_TTY=$(tty)
+  export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+fi
 
-# if [[ -x /usr/local/bin/gpgconf ]]; then
-#   gpgconf --launch gpg-agent
-#   export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
-# fi
-
-##
-# Docker helper functions
-##
-dmenv() {
-  machine="default"
-  if [[ $1 != "" ]]; then
-    machine=$1
-  fi
-  eval $(docker-machine env $machine)
-  if [[ $? -eq 0 ]]; then
-    export RPROMPT="docker: $machine"
-  fi
-}
-
-chefenv() {
-  if [[ $1 == "llmhq" ]]; then
-    export CHEF_USER='tanderson'
-    export CHEF_ORG='llmhq'
-  else
-    unset CHEF_USER
-    unset CHEF_ORG
-  fi
-}
 ##
 # Pulled from the colors plugin found in oh-my-zsh
 ##
@@ -77,3 +50,15 @@ if [[ "$DISABLE_LS_COLORS" != "true" ]]; then
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
   fi
 fi
+
+# Configure better python dev
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+
+# Configure chefdk
+if [[ -d "/opt/chefdk" ]]; then
+    eval "$(chef shell-init zsh)"
+fi
+
+# Set Java to 1.8 instead of 9.0
+export JAVA_HOME=$(/usr/libexec/java_home -v '1.8')
