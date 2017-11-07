@@ -1,2 +1,2 @@
 # Don't add private keys into vcs
-chef/*.pem
+chef/**/*.pem
