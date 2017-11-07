@@ -17,3 +17,7 @@ function cookwith() {
     export CHEF_ENV=${chef_env}
     cd $CHEF_HOME
 }
+
+function chefwho() {
+    echo "Chef Environment: $CHEF_ENV"
+}
