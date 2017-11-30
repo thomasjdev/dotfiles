@@ -1,17 +1,6 @@
-function vmware-docker() {
-
-    # With no args set the environment to work with docker
-    if [[ $# -eq 0 ]]; then
-        _status=$(docker-machine status vmware-docker)
-        if [[ $_status == "Stopped" ]]; then
-            docker-machine start vmware-docker
-        fi
-        eval $(docker-machine env vmware-docker)
-    else
-        docker-machine $* vmware-docker
-    fi
+_terraform_aws_profile() {
+  if [ -z $1 ]; then return; fi
+  export TF_VAR_aws_access_key=$(aws configure get $1.aws_access_key_id)
+  export TF_VAR_aws_secret_key=$(aws configure get $1.aws_secret_access_key)
 }
 
-function gpip() {
-    PIP_REQUIRE_VIRTUALENV="" pip "$@"
-}

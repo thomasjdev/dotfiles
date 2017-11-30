@@ -1,13 +1,7 @@
 # Load our AWS environment defaults and aliases
 export AWS_DEFAULT_PROFILE='personal'
 
-_terraform_aws_profile() {
-  if [ -z $1 ]; then return; fi
-  export TF_VAR_aws_access_key=$(aws configure get $1.aws_access_key_id)
-  export TF_VAR_aws_secret_key=$(aws configure get $1.aws_secret_access_key)
-}
-
-export EDITOR='subl -n -w'
+export EDITOR='code -n -w'
 
 # Setup for Vagrant VMware development
 export VAGRANT_VMWARE_CLONE_DIRECTORY="$HOME/.vagrant.vm"
@@ -51,9 +45,14 @@ if [[ "$DISABLE_LS_COLORS" != "true" ]]; then
   fi
 fi
 
-# Configure better python dev
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-
 # Set Java to 1.8 instead of 9.0
 export JAVA_HOME=$(/usr/libexec/java_home -v '1.8')
+
+# Set python to use anaconda
+if [[ -d /usr/local/anaconda3 ]]; then
+  export PATH="/usr/local/anaconda3/bin:$PATH"
+fi
+
+if [[ -x /usr/local/bin/direnv ]]; then
+  eval "$(direnv hook zsh)"
+fi

@@ -15,9 +15,9 @@ function cookwith() {
 
     local chef_env=$1
     export CHEF_ENV=${chef_env}
-    cd $CHEF_HOME
+    echo "Cooking for ${chef_env} now"
 }
 
-function chefwho() {
+function cookingwith() {
     echo "Chef Environment: $CHEF_ENV"
 }
