@@ -12,7 +12,9 @@ zplug "zsh-users/zsh-syntax-highlighting", from:github
 zplug "zchee/go-zsh-completions", from:github
 zplug "esc/conda-zsh-completion", from:github
 zplug "~/.zsh", from:local
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+
 
 if ! zplug check --verbose; then
     printf "Install zplug plugins? [y/N]: "
@@ -23,4 +25,3 @@ fi
 
 zplug load
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
