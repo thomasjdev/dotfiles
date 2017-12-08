@@ -1,7 +1,6 @@
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-zplug "mafredri/zsh-async", from:github, defer:0
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/key-bindings", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
@@ -13,7 +12,7 @@ zplug "zchee/go-zsh-completions", from:github
 zplug "esc/conda-zsh-completion", from:github
 zplug "~/.zsh", from:local
 
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 
 
 if ! zplug check --verbose; then

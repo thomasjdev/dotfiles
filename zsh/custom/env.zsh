@@ -20,7 +20,9 @@ fi
 ##
 # Pulled from the colors plugin found in oh-my-zsh
 ##
-export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+# export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
 export GREP_COLOR='1;33'
 
 if [[ "$DISABLE_LS_COLORS" != "true" ]]; then
