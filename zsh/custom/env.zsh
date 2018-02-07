@@ -11,11 +11,11 @@ export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 export DEVTLD="$HOME/Code"
 
 # Allow gpg controlled SSH keys
-if [[ -x /usr/local/bin/gpgconf ]]; then
-  gpgconf --launch gpg-agent
-  export GPG_TTY=$(tty)
-  export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
-fi
+#  if [[ -x /usr/local/bin/gpgconf ]]; then
+#    gpgconf --launch gpg-agent
+#    export GPG_TTY=$(tty)
+#    export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+#  fi
 
 ##
 # Pulled from the colors plugin found in oh-my-zsh
@@ -47,12 +47,18 @@ if [[ "$DISABLE_LS_COLORS" != "true" ]]; then
   fi
 fi
 
-# Set Java to 1.8 instead of 9.0
-export JAVA_HOME=$(/usr/libexec/java_home -v '1.8')
+# Configure better python dev
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
-# Set python to use anaconda
-if [[ -d /usr/local/anaconda3 ]]; then
-  export PATH="/usr/local/anaconda3/bin:$PATH"
+# Check if pyenv and pyenv virtualenv are installed and init them
+if type pyenv &> /dev/null; then
+    eval "$(pyenv init - zsh)"
+    source /usr/local/share/zsh/site-functions/pyenv.zsh
+fi
+
+if type "pyenv-virtualenv" &> /dev/null; then
+    eval "$(pyenv virtualenv-init - zsh)"
 fi
 
 if [[ -x /usr/local/bin/direnv ]]; then

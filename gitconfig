@@ -21,7 +21,7 @@
 	ui = auto
 [core]
 	excludesfile = /Users/thomas/.gitignore
-	editor = subl -n -w
+	editor = code -n --wait
 	autocrlf = input
 [apply]
 	whitespace = nowarn

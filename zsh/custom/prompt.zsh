@@ -15,5 +15,5 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 
 POWERLEVEL9K_TIME_FORMAT="%D{\uf43a %H:%M:%S}"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( dir newline vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time load anaconda time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ssh context dir newline vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time load anaconda docker_machine time)
