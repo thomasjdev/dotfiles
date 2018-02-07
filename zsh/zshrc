@@ -1,4 +1,4 @@
-if [[ $(uname) -eq "Darwin" ]]; then
+if [[ $(which uname) -eq "Darwin" ]]; then
     export ZPLUG_HOME=/usr/local/opt/zplug
 else
     export ZPLUG_HOME=$HOME/.zplug
