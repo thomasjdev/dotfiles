@@ -1,8 +1,11 @@
-if [[ $(which uname) -eq "Darwin" ]]; then
+case `uname` in
+  Darwin)
     export ZPLUG_HOME=/usr/local/opt/zplug
-else
-    export ZPLUG_HOME=$HOME/.zplug
-fi
+  ;;
+  Linux)
+   export ZPLUG_HOME=$HOME/.zplug
+  ;;
+esac
 
 # Check that we have zplug before running
 if [[ -d $ZPLUG_HOME ]]; then
