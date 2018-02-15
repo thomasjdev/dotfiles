@@ -1,32 +1,31 @@
-zmodload zsh/zprof
+source "${HOME}/.zgen/zgen.zsh"
 
-case `uname` in
-  Darwin)
-    export ZPLUG_HOME=/usr/local/opt/zplug
-  ;;
-  Linux)
-   export ZPLUG_HOME=$HOME/.zplug
-  ;;
-esac
+# if the init scipt doesn't exist
+if ! zgen saved; then
+    # prezto options
+    zgen prezto '*:*' case-sensitive 'no'
+    zgen prezto '*:*' color 'yes'
+    zgen prezto prompt theme 'powerlevel9k'
+    zgen prezto terminal auto-title 'yes'
 
-# Check that we have zplug before running
-if [[ -d $ZPLUG_HOME ]]; then
-    source $ZPLUG_HOME/init.zsh
+    zgen prezto syntax-highlighting styles \
+    'alias' 'fg=blue' \
+    'builtin' 'fg=blue' \
+    'command' 'fg=blue' \
+    'function' 'fg=blue' \
+    'precommand' 'fg=cyan' \
+    'commandseparator' 'fg=green'
 
-    zplug "lib/completion", from:oh-my-zsh
-    zplug "lib/key-bindings", from:oh-my-zsh
-    zplug "lib/history", from:oh-my-zsh
-    zplug "lib/directories", from:oh-my-zsh
-    zplug "plugins/git", from:oh-my-zsh, if:"hash git"
-    zplug "plugins/git-flow", from:oh-my-zsh, if:"hash git"
-    zplug "plugins/ssh-agent", from:oh-my-zsh
-    zplug "zsh-users/zsh-completions", from:github
-    zplug "zsh-users/zsh-syntax-highlighting", from:github
-    zplug "~/.zsh", from:local
+    # prezto and modules
+    zgen prezto
+    zgen prezto git
+    zgen prezto history
+    zgen prezto syntax-highlighting
+    zgen prezto history-substring-search
 
-    zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
-
-    zplug load
+    zgen load ${HOME}/.dotfiles/zsh/custom/
+    # generate the init script from plugins above
+    zgen save
 fi
 
  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
