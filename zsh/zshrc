@@ -1,3 +1,5 @@
+zmodload zsh/zprof
+
 case `uname` in
   Darwin)
     export ZPLUG_HOME=/usr/local/opt/zplug
@@ -16,24 +18,15 @@ if [[ -d $ZPLUG_HOME ]]; then
     zplug "lib/history", from:oh-my-zsh
     zplug "lib/directories", from:oh-my-zsh
     zplug "plugins/git", from:oh-my-zsh, if:"hash git"
+    zplug "plugins/git-flow", from:oh-my-zsh, if:"hash git"
     zplug "plugins/ssh-agent", from:oh-my-zsh
     zplug "zsh-users/zsh-completions", from:github
     zplug "zsh-users/zsh-syntax-highlighting", from:github
-    zplug "zchee/go-zsh-completions", from:github
-    # zplug "esc/conda-zsh-completion", from:github
     zplug "~/.zsh", from:local
 
     zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 
-
-    if ! zplug check --verbose; then
-        printf "Install zplug plugins? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        fi
-    fi
-
     zplug load
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+ [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
