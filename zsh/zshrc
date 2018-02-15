@@ -2,10 +2,11 @@ source "${HOME}/.zgen/zgen.zsh"
 
 # if the init scipt doesn't exist
 if ! zgen saved; then
+
     # prezto options
     zgen prezto '*:*' case-sensitive 'no'
     zgen prezto '*:*' color 'yes'
-    zgen prezto prompt theme 'powerlevel9k'
+    zgen prezto prompt theme 'sorin'
     zgen prezto terminal auto-title 'yes'
 
     zgen prezto syntax-highlighting styles \
@@ -22,10 +23,22 @@ if ! zgen saved; then
     zgen prezto history
     zgen prezto syntax-highlighting
     zgen prezto history-substring-search
+    
+    zgen load "${HOME}/.dotfiles/zsh/prompt.zsh"
+    zgen load bhilburn/powerlevel9k powerlevel9k.zsh-theme
 
-    zgen load ${HOME}/.dotfiles/zsh/custom/
-    # generate the init script from plugins above
+    if [ $(uname -a | grep -ci Darwin) = 1 ]; then
+        zgen prezto homebrew
+        zgen prezto osx
+    fi
+    
     zgen save
 fi
 
- [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Source some other basic configs for zsh
+source "${HOME}/.dotfiles/zsh/env.zsh"
+source "${HOME}/.dotfiles/zsh/functions.zsh" 
+source "${HOME}/.dotfiles/zsh/aliases.zsh"
+source "${HOME}/.dotfiles/zsh/chef.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

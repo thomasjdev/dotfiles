@@ -1,6 +1,6 @@
 # Configure chefdk
 if [[ -d "/opt/chefdk" ]]; then
-    eval "$(chef shell-init zsh)"
+    # eval "$(chef shell-init zsh)"
     export CHEF_HOME="$HOME/Code/chef"
 fi
 
