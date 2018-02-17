@@ -1,5 +1,4 @@
 node_name: "tanderson"
-server: "https://chef.llmhq.com/organizations/llmhq"
-validator: "llmhq-validator"
+server: "https://chef.llmhq.com/organizations/llmdev"
 cookbook_copyright: "Lakeshore Learning Materials"
 cookbook_email: "chefdevs@lakeshorelearning.com"

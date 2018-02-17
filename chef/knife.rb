@@ -1,19 +1,18 @@
 # See https://docs.getchef.com/config_rb_knife.html for more information on knife configuration options
-chef_env = ENV["CHEF_ENV"] || "designedforgood"
+chef_env = ENV["CHEF"] || "gpdev"
+chef_home = "#{ENV["DEVTLD"]}/chef"
 current_dir = File.dirname(__FILE__)
 
 env_config = YAML.load_file("#{current_dir}/#{chef_env}/config.yml")
-cookbook_dir = "#{ENV["HOME"]}/chef/#{chef_env}"
 
 log_level                :info
 log_location             STDOUT
 
 node_name                env_config["node_name"]
-client_key               "#{current_dir}/#{chef_env}/#{env_config["node_name"]}.pem"
-validation_client_name   env_config["validator"] || "chef-validator"
-validation_key           "#{current_dir}/#{chef_env}/#{env_config["validator"]}.pem"
-chef_server_url          env_config["server"]
-cookbook_path            ["#{ENV["CHEF_HOME"]}/cookbooks", "#{ENV["CHEF_HOME"]}/site-cookbooks" ]
+client_key               "#{current_dir}/#{env_config["node_name"]}.pem"
+validation_client_name   'chef-validator'
+chef_server_url          env_config['server']
+cookbook_path            ["#{chef_home}/cookbooks", "#{chef_home}/site-cookbooks"]
 ssl_verify_mode          :verify_peer
 
 cookbook_copyright = env_config["cookbook_copyright"]

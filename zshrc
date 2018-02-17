@@ -100,27 +100,19 @@ fi
 ###
 # Configure chefdk
 if [[ -d "/opt/chefdk" ]]; then
-    # eval "$(chef shell-init zsh)"
-    export CHEF_HOME="$HOME/Code/chef"
+    eval "$(chef shell-init zsh)"
+    alias llmdev_knife="CHEF='llmdev' knife $@"
+    alias llmdev_chef="CHEF='llmdev' chef $@"
+    alias llmdev_berks="CHEF='llmdev' berks $@"
+
+    alias llmprod_knife="CHEF='llmprod' knife $@"
+    alias llmprod_chef="CHEF='llmprod' chef $@"
+    alias llmprod_berks="CHEF='llmprod' berks $@"
+    
+    alias llmhq_knife="CHEF='llmhq' knife $@"
+    alias llmhq_chef="CHEF='llmhq' chef $@"
+    alias llmhq_berks="CHEF='llmhq' berks $@"
 fi
-
-# Configure our chef environment for personal or work
-
-function cookwith() {
-    if [[ $# -eq 0 ]]; then
-        local chef_envs=$(ls -1A $HOME/.chef | grep -v -e pem -e rb)
-        echo "Chef Environnments: \n$chef_envs"
-        return 0
-    fi
-
-    local chef_env=$1
-    export CHEF_ENV=${chef_env}
-    echo "Cooking for ${chef_env} now"
-}
-
-function cookingwith() {
-    echo "Chef Environment: $CHEF_ENV"
-}
 
 ### 
 # Misc
