@@ -1,5 +1,5 @@
 # See https://docs.getchef.com/config_rb_knife.html for more information on knife configuration options
-chef_env = ENV["CHEF"] || "gpdev"
+chef_env = ENV["CHEF"] || "llmdev"
 chef_home = "#{ENV["DEVTLD"]}/chef"
 current_dir = File.dirname(__FILE__)
 
@@ -22,3 +22,4 @@ knife[:editor] = "code -n --wait"
 knife[:freeze] = true
 knife[:cookbook_copyright] = env_config["cookbook_copyright"]
 knife[:cookbook_email] = env_config["cookbook_email"]
+knife[:chef_repo_path] = "#{chef_home}/#{env_config['chef_repo_path']}"

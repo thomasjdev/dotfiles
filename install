@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+DOTFILES=$HOME/.dotfiles
+DOTLOCAL=$HOME/.local/share/dotfiles
+
+GITCLONE="git clone --depth=1"
+
+$GITCLONE https://github.com/zsh-users/zsh-completions.git $DOTLOCAL/zsh-completions
+$GITCLONE https://github.com/zsh-users/zsh-history-substring-search.git $DOTLOCAL/zsh-history-substring-search
+$GITCLONE https://github.com/zsh-users/zsh-syntax-highlighting.git $DOTLOCAL/zsh-syntax-highlighting
+$GITCLONE https://github.com/sindresorhus/pure.git $DOTLOCAL/pure
