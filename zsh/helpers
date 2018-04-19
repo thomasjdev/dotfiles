@@ -33,11 +33,11 @@ _terraform_aws_profile() {
 }
 
 # Allow gpg controlled SSH keys
-#  if [[ -x /usr/local/bin/gpgconf ]]; then
-#    gpgconf --launch gpg-agent
-#    export GPG_TTY=$(tty)
-#    export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
-#  fi
+  if [[ -x /usr/local/bin/gpgconf ]]; then
+    gpgconf --launch gpg-agent
+    export GPG_TTY=$(tty)
+    export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+  fi
 
 if type pyenv &> /dev/null; then
     eval "$(pyenv init - zsh)"

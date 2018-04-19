@@ -6,6 +6,8 @@ alias gpgreset='gpgconf --kill gpg-agent && sleep 1 && gpg --card-status'
 alias gpgquitagent='gpg-connect-agent killagent /bye'
 alias gpgstatus='gpg --card-status'
 alias docker-volume-cleanup='docker volume rm $(docker volume ls -qf dangling=true)'
+alias docker-init='export DOCKER_HOST=tcp://localhost:2375'
+alias docker-ip='docker-machine ip $@'
 alias tfpersonal='_terraform_aws_profile personal'
 alias tfwork='_terraform_aws_profile llmhq'
 
@@ -14,10 +16,12 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# Colorize output
+# Mac specific
 if [[ `uname` == Darwin ]]; then
   alias dircolors='gdircolors'
   alias ls='gls --color=auto'
+  alias pbc='pbcopy'
+  alias pbp='pbpaste'
 else
   alias ls='ls --color=auto'
 fi
