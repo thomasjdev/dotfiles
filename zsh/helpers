@@ -10,7 +10,7 @@ gpip() {
 }
 
 # Load our AWS environment defaults and aliases
-export AWS_DEFAULT_PROFILE='personal'
+export AWS_DEFAULT_PROFILE='llmhq'
 
 # Set preffered editor
 export EDITOR='code -n -w'
@@ -25,12 +25,6 @@ export DEVTLD="$HOME/Code"
 ###
 # Helper functions
 ###
-
-_terraform_aws_profile() {
-  if [ -z $1 ]; then return; fi
-  export TF_VAR_aws_access_key=$(aws configure get $1.aws_access_key_id)
-  export TF_VAR_aws_secret_key=$(aws configure get $1.aws_secret_access_key)
-}
 
 # Allow gpg controlled SSH keys
   if [[ -x /usr/local/bin/gpgconf ]]; then

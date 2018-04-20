@@ -6,10 +6,6 @@ alias gpgreset='gpgconf --kill gpg-agent && sleep 1 && gpg --card-status'
 alias gpgquitagent='gpg-connect-agent killagent /bye'
 alias gpgstatus='gpg --card-status'
 alias docker-volume-cleanup='docker volume rm $(docker volume ls -qf dangling=true)'
-alias docker-init='export DOCKER_HOST=tcp://localhost:2375'
-alias docker-ip='docker-machine ip $@'
-alias tfpersonal='_terraform_aws_profile personal'
-alias tfwork='_terraform_aws_profile llmhq'
 
 # Safety first
 alias cp='cp -i'
