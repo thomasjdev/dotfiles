@@ -33,6 +33,10 @@ export DEVTLD="$HOME/Code"
     export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
   fi
 
+if type rbenv &> /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
 if type pyenv &> /dev/null; then
     eval "$(pyenv init - zsh)"
 fi

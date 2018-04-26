@@ -1,16 +1,16 @@
 [[ "$PATH" =~ /usr/local/bin ]] || export PATH=/usr/local/bin:$PATH
 
 export DOTFILES=$HOME/.dotfiles
-export INCLUDES=$HOME/.local/share/dotfiles
+export DFINCLUDES=$HOME/.local/share/dotfiles
 
 source $DOTFILES/zsh/aliases
 source $DOTFILES/zsh/helpers
 
-source $INCLUDES/zsh-completions/zsh-completions.plugin.zsh
-source $INCLUDES/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $INCLUDES/zsh-history-substring-search/zsh-history-substring-search.zsh
-source $INCLUDES/pure/async.zsh
-source $INCLUDES/pure/pure.zsh
+source $DFINCLUDES/zsh-completions/zsh-completions.plugin.zsh
+source $DFINCLUDES/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $DFINCLUDES/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $DFINCLUDES/pure/async.zsh
+source $DFINCLUDES/pure/pure.zsh
 
 eval `dircolors $DOTFILES/dircolors`
 HISTFILE=$HOME/.zsh_history

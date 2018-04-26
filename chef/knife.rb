@@ -1,6 +1,6 @@
 # See https://docs.getchef.com/config_rb_knife.html for more information on knife configuration options
 chef_env = ENV["CHEF"] || "llmdev"
-chef_home = "#{ENV["DEVTLD"]}/chef"
+chef_home = "#{ENV["HOME"]}/Projects/lakeshore/chef"
 current_dir = File.dirname(__FILE__)
 
 env_config = YAML.load_file("#{current_dir}/#{chef_env}/config.yml")
