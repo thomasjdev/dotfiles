@@ -50,3 +50,7 @@ fi
 if [[ -x /usr/local/bin/direnv ]]; then
   eval "$(direnv hook zsh)"
 fi
+
+if [[ -f $HOME/.github_token ]]; then
+  export GITHUB_TOKEN=$(cat $HOME/.github_token)
+fi
