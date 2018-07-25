@@ -46,3 +46,7 @@
 	keepBackup = true
 [diff]
 	tool = Kaleidoscope
+[fetch]
+	prune = true
+[rebase]
+	autosquash = true

@@ -27,11 +27,13 @@ export DEVTLD="$HOME/Code"
 ###
 
 # Allow gpg controlled SSH keys
-  if [[ -x /usr/local/bin/gpgconf ]]; then
-    gpgconf --launch gpg-agent
-    export GPG_TTY=$(tty)
-    export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
-  fi
+#  if [[ -x /usr/local/bin/gpgconf ]]; then
+#    gpgconf --launch gpg-agent
+#    export GPG_TTY=$(tty)
+#    export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+#  fi
+
+eval "$(ssh-agent -s)" >/dev/null
 
 if type rbenv &> /dev/null; then
   eval "$(rbenv init -)"
