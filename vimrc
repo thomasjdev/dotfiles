@@ -1,6 +1,13 @@
 " Allow vim to break compatibility with vi
 set nocompatible " This must be first, because it changes other options
 
+" Install plug if not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Load plug
 call plug#begin('~/.vim/plugged')
 
