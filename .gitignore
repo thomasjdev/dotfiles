@@ -1,2 +1,5 @@
 # Don't add private keys into vcs
 chef/**/*.pem
+
+# Vim plugins should be reinstalled on new setup
+vim/plugged
