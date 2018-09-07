@@ -25,24 +25,6 @@ fi
 # Colorize output and some exclusions
 alias grep="grep --color=auto --exclude-dir={.git,artwork,node_modules,vendor}"
 
-###
-# All things Chef
-###
-# Configure chefdk
-if [[ -d "/opt/chefdk" ]]; then
-    alias llmdev_knife="CHEF='llmdev' knife $@"
-    alias llmdev_chef="CHEF='llmdev' chef $@"
-    alias llmdev_berks="CHEF='llmdev' berks $@"
-
-    alias llmprod_knife="CHEF='llmprod' knife $@"
-    alias llmprod_chef="CHEF='llmprod' chef $@"
-    alias llmprod_berks="CHEF='llmprod' berks $@"
-    
-    alias llmhq_knife="CHEF='llmhq' knife $@"
-    alias llmhq_chef="CHEF='llmhq' chef $@"
-    alias llmhq_berks="CHEF='llmhq' berks $@"
-fi
-
 # Git aliases
 alias g='git'
 alias ga='git add'

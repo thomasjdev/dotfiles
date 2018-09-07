@@ -19,21 +19,9 @@ export EDITOR='code -n -w'
 export VAGRANT_VMWARE_CLONE_DIRECTORY="$HOME/.vagrant.vm"
 export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 
-# We like to change our Project structure from time to time
-export DEVTLD="$HOME/Code"
-
 ###
 # Helper functions
 ###
-
-# Allow gpg controlled SSH keys
-#  if [[ -x /usr/local/bin/gpgconf ]]; then
-#    gpgconf --launch gpg-agent
-#    export GPG_TTY=$(tty)
-#    export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
-#  fi
-
-eval "$(ssh-agent -s)" >/dev/null
 
 if type rbenv &> /dev/null; then
   eval "$(rbenv init -)"
@@ -53,10 +41,4 @@ fi
 
 if [[ -f $HOME/.github_token ]]; then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)
-fi
-
-# Setup for google cloud sdk
-if [[ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]]; then
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
