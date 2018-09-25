@@ -23,9 +23,17 @@ export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 # Helper functions
 ###
 
-if type rbenv &> /dev/null; then
-  eval "$(rbenv init -)"
+# Allow gpg controlled SSH keys
+if [[ -x /usr/local/bin/gpgconf ]]; then
+  gpgconf --launch gpg-agent
+  export GPG_TTY=$(tty)
+  export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 fi
+
+# We're not doing much ruby now so we can comment this out
+#if type rbenv &> /dev/null; then
+#  eval "$(rbenv init -)"
+#fi
 
 if type pyenv &> /dev/null; then
     eval "$(pyenv init - zsh)"
