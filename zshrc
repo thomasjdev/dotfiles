@@ -26,12 +26,6 @@ bindkey '^e' end-of-line
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-
-# Source aws zsh completion
-if [[ -f $HOME/.pyenv/versions/3.6.4/bin/aws_zsh_completer.sh ]]; then
-  source $HOME/.pyenv/versions/3.6.4/bin/aws_zsh_completer.sh
-fi
-
 ### 
 # Misc
 ###

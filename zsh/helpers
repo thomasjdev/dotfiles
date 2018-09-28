@@ -30,19 +30,6 @@ if [[ -x /usr/local/bin/gpgconf ]]; then
   export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 fi
 
-# We're not doing much ruby now so we can comment this out
-#if type rbenv &> /dev/null; then
-#  eval "$(rbenv init -)"
-#fi
-
-if type pyenv &> /dev/null; then
-    eval "$(pyenv init - zsh)"
-fi
-
-if type "pyenv-virtualenv" &> /dev/null; then
-    eval "$(pyenv virtualenv-init - zsh)"
-fi
-
 if [[ -x /usr/local/bin/direnv ]]; then
   eval "$(direnv hook zsh)"
 fi
