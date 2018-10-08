@@ -50,3 +50,5 @@
 	prune = true
 [rebase]
 	autosquash = true
+[init]
+	templatedir = ~/.git-templates
