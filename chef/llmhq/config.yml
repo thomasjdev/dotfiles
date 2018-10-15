@@ -1,5 +1,0 @@
-node_name: "tanderson"
-server: "https://chef.llmhq.com/organizations/llmhq"
-cookbook_copyright: "Lakeshore Learning Materials"
-cookbook_email: "chefdevs@lakeshorelearning.com"
-chef_repo_path: "repos/llmhq"
