@@ -30,12 +30,12 @@ bindkey '^[[B' history-substring-search-down
 # Misc
 ###
 # Source aws & azure zsh completion
-if [[ -f $HOME/.pyenv/versions/cloud/bin/aws_zsh_completer.sh ]]; then
-  source $HOME/.pyenv/versions/cloud/bin/aws_zsh_completer.sh
-fi
+#if [[ -f $HOME/.pyenv/versions/cloud/bin/aws_zsh_completer.sh ]]; then
+#  source $HOME/.pyenv/versions/cloud/bin/aws_zsh_completer.sh
+#fi
 
-if [[ -f $HOME/.pyenv/versions/cloud/bin/az.completion.sh ]]; then
-  source $HOME/.pyenv/versions/cloud/bin/az.completion.sh
-fi
+#if [[ -f $HOME/.pyenv/versions/cloud/bin/az.completion.sh ]]; then
+#  source $HOME/.pyenv/versions/cloud/bin/az.completion.sh
+#fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -3,11 +3,7 @@
 ###
 
 # Configure better python dev
-export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-gpip() {
-    PIP_REQUIRE_VIRTUALENV="" pip "$@"
-}
 
 # Load our AWS environment defaults and aliases
 export AWS_DEFAULT_PROFILE='llmhq'
@@ -30,17 +26,13 @@ if [[ -x /usr/local/bin/gpgconf ]]; then
   export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 fi
 
-if type pyenv &> /dev/null; then
-    eval "$(pyenv init - zsh)"
+if [[ -x /usr/local/bin/direnv ]]; then
+  eval "$(direnv hook zsh)"
 fi
 
-if type "pyenv-virtualenv" &> /dev/null; then
-    eval "$(pyenv virtualenv-init - zsh)"
+if [[ -x /usr/local/anaconda3/bin/conda ]]; then
+  export PATH=/usr/local/anaconda3/bin:$PATH
 fi
-
-#if [[ -x /usr/local/bin/direnv ]]; then
-#  eval "$(direnv hook zsh)"
-#fi
 
 if [[ -f $HOME/.github_token ]]; then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)
