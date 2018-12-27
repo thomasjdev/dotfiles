@@ -10,8 +10,8 @@ alias grep="grep --color=auto --exclude-dir={.git,artwork,node_modules,vendor}"
 [[ "$PATH" =~ /usr/local/bin ]] || export PATH=/usr/local/bin:$PATH
 
 # Set preffered editor
-#export EDITOR='code -n -w'
-export EDITOR='subl -n -w'
+export EDITOR='code -n -w'
+# export EDITOR='subl -n -w'
 
 if [ -x /usr/local/bin/gls ]; then
   alias ls='gls --color=auto'
