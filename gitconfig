@@ -1,7 +1,7 @@
 [user]
 	name = Thomas Anderson
 	email = thomas@tjanderson.net
-	signingkey = 0xF482A73599B43272
+	signingKey = D10BCDDF66F9A6610E4EB079F482A73599B43272
 [alias]
 	a = add
 	br = branch
@@ -52,3 +52,5 @@
 	autosquash = true
 [init]
 	templatedir = ~/.git-templates
+[gpg]
+	program = /usr/local/bin/gpg
