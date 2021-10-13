@@ -1,7 +1,6 @@
 [user]
 	name = Thomas Anderson
-	email = thomas@tjanderson.net
-	signingKey = D10BCDDF66F9A6610E4EB079F482A73599B43272
+	email = thomas@heythomasj.com
 [alias]
 	a = add
 	br = branch
@@ -50,7 +49,7 @@
 	prune = true
 [rebase]
 	autosquash = true
-[init]
-	templatedir = ~/.git-templates
 [gpg]
 	program = /usr/local/bin/gpg
+[init]
+	defaultBranch = main

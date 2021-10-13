@@ -11,7 +11,10 @@ alias grep="grep --color=auto --exclude-dir={.git,artwork,node_modules,vendor}"
 
 # Set preffered editor
 export EDITOR='code -n -w'
-# export EDITOR='subl -n -w'
+
+if [ -x /usr/local/bin/bat ]; then
+  alias cat='bat --theme=Dracula'
+fi
 
 if [ -x /usr/local/bin/gls ]; then
   alias ls='gls --color=auto'
