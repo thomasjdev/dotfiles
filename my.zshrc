@@ -22,5 +22,5 @@ if [ -f $ZSH/theme/prompt.zsh ]; then
   source $ZSH/theme/prompt.zsh
 fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/thomas/.sdkman"
-[[ -s "/Users/thomas/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/thomas/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="/Users/thomas/.sdkman"
+# [[ -s "/Users/thomas/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/thomas/.sdkman/bin/sdkman-init.sh"

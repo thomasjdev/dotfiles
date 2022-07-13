@@ -1,3 +1,11 @@
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:$(brew --prefix)/share/zsh-completions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 autoload -Uz compinit
 _comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
 if (( $#_comp_files )); then

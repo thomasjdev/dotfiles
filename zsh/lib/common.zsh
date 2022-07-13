@@ -7,14 +7,12 @@ alias rm='rm -i'
 # Colorize output and some exclusions
 alias grep="grep --color=auto --exclude-dir={.git,artwork,node_modules,vendor}"
 # Make sure local/bin is in PATH
+[[ "$PATH" =~ $HOME/.bin ]] || export PATH=$HOME/.bin:$PATH
 [[ "$PATH" =~ /usr/local/bin ]] || export PATH=/usr/local/bin:$PATH
+[[ "$PATH" =~ /opt/homebrew/bin ]] || export PATH=/opt/homebrew/bin:$PATH
 
 # Set preffered editor
-export EDITOR='code -n -w'
-
-if [ -x /usr/local/bin/bat ]; then
-  alias cat='bat --theme=Dracula'
-fi
+export EDITOR='nova -w'
 
 if [ -x /usr/local/bin/gls ]; then
   alias ls='gls --color=auto'
