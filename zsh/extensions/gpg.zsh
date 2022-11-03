@@ -16,8 +16,8 @@ reveal () {
 
 # Allow gpg controlled SSH keys
 # Enable when we want to use a yubikey as our hardware based ssh key
-if [[ -x /opt/homebrew/bin/gpgconf ]]; then
-  export GPG_TTY="$(tty)"
-  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-  gpgconf --launch gpg-agent
-fi
+#if [[ -x /opt/homebrew/bin/gpgconf ]]; then
+#  export GPG_TTY="$(tty)"
+#  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#  gpgconf --launch gpg-agent
+#fi
