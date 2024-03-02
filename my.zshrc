@@ -21,6 +21,12 @@ done
 if [ -f $ZSH/theme/prompt.zsh ]; then
   source $ZSH/theme/prompt.zsh
 fi
+
+eval "$(op completion zsh)"; compdef _op op
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="/Users/thomas/.sdkman"
 # [[ -s "/Users/thomas/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/thomas/.sdkman/bin/sdkman-init.sh"
+
+# Created by `pipx` on 2024-01-30 19:52:42
+export PATH="$PATH:/Users/thomas/.local/bin"
+eval "$(register-python-argcomplete pipx)"

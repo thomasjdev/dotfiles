@@ -12,7 +12,7 @@ alias grep="grep --color=auto --exclude-dir={.git,artwork,node_modules,vendor}"
 [[ "$PATH" =~ /opt/homebrew/bin ]] || export PATH=/opt/homebrew/bin:$PATH
 
 # Set preffered editor
-export EDITOR='nova -w'
+export EDITOR='idea -e -w'
 
 if [ -x /usr/local/bin/gls ]; then
   alias ls='gls --color=auto'
