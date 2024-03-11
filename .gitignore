@@ -3,3 +3,9 @@ chef/**/*.pem
 
 # Vim plugins should be reinstalled on new setup
 vim/plugged
+
+# tmux plugins will be pulled from source
+tmux/plugins
+
+# neovim excludes
+nvim/plugin
