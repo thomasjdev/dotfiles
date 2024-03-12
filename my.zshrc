@@ -30,3 +30,6 @@ eval "$(op completion zsh)"; compdef _op op
 # Created by `pipx` on 2024-01-30 19:52:42
 export PATH="$PATH:/Users/thomas/.local/bin"
 eval "$(register-python-argcomplete pipx)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
