@@ -1,0 +1,274 @@
+" base configuration
+set scrolloff=5
+set showmode
+set showcmd
+set incsearch
+set ignorecase
+set smartcase
+set relativenumber
+set number
+set highlightedyank
+set hlsearch
+set visualbell
+set notimeout
+set ideajoin
+set ideamarks
+
+let mapleader=" "
+
+""" Enbale Plugins -------------------------
+Plug 'justinmk/vim-sneak'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'machakann/vim-highlightedyank'
+
+""" Set Handlers ----------------------------
+sethandler <C-i> n-v-i:vim
+sethandler <C-o> n-v-i:vim
+sethandler <C-d> n-v-i:vim
+sethandler <C-u> n-v-i:vim
+sethandler <C-h> n-v-i:vim
+sethandler <C-j> n-v-i:vim
+sethandler <C-k> n-v-i:vim
+sethandler <C-l> n-v-i:vim
+
+" source
+map <leader>9 :source ~/.ideavimrc<cr>
+
+""" Key maps -------------------------------
+
+" Shortcut for copying to/from System Clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>P "+P
+
+" Splitting Windows
+nmap <Leader>\ :vsplit<CR>
+nmap <Leader>v :vsplit<CR>
+nmap <Leader>- :split<CR>
+nmap <Leader>h :split<CR>
+
+" Motions
+nnoremap H ^
+nnoremap L $
+
+" Greatest remap EVER!!
+" Let me explain, this remap while in visiual mode
+" will delete what is currently highlighted and replace it
+" with what is in the register BUT it will YANK (delete) it
+" to a VOID register. Meaning I still have what I originally had
+" when I pasted. I don't loose the previous thing I YANKED!
+vnoremap <leader>p "_dP
+
+" Actions
+" Hide open panels
+nmap <Leader>w :action HideAllWindows<cr>
+
+" Open recent project dialog box
+nmap <Leader><Leader>m :action ManageRecentProjects<CR>
+
+" Mapping to mimic BufferExplorer
+nmap <Leader>be :action Switcher<CR>
+nmap <Leader>fb :action RecentFiles<CR>
+nmap <Leader><Leader>b :action RecentFiles<CR>
+
+" Window navigation
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <a-w> :action CloseAllEditorsButActive<cr>
+nnoremap <a-q> :action CloseContent<cr>
+nnoremap <a-t> :action NewScratchFile<cr>
+nnoremap <leader>wv :action SplitVertically<cr>
+nnoremap <leader>ws :action SplitHorizontally<cr>
+nnoremap <leader>wc :action Unsplit<cr>
+nnoremap <leader>wp :action MoveEditorToOppositeTabGroup<cr>
+nnoremap <Leader>wn :action EditSourceInNewWindow<cr>
+
+" Put search results in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
+
+" Folds
+nnoremap -- :action ExpandAllRegions<cr>
+nnoremap za :action ExpandCollapseToggleAction<cr>
+
+" Find (leader f)
+nnoremap ;; :nohlsearch<cr>
+map <leader>fe :action GotoClass<cr>
+map <leader>fn :action GotoFile<cr>
+map <leader>fa :action GotoAction<cr>
+map <leader>fg :action FindInPath<cr>
+map <Leader>fv :action SearchEverywhere<CR>
+map <leader>fh :action RecentFiles<cr>
+map <leader>fm :action RecentLocations<cr>
+map <leader>fs :action GotoSymbol<cr>
+map <leader>fd :action Find<cr>
+map <leader>fr :action Replace<cr>
+map <leader>fR :action ReplaceInPath<cr>
+map <leader>fx :action PasteMultiple<cr>
+map <leader>ft :action ActivateTODOToolWindow<cr>
+
+" Views (leader v)
+map <leader>vf :action ActivateProjectToolWindow<cr>
+map <leader>vp :action ActivateProblemsViewToolWindow<cr>
+map <leader>vs :action ActivateStructureToolWindow<cr>
+map <leader>vt :action ActivateTerminalToolWindow<cr>
+map <leader>vv :action ActivateServicesToolWindow<cr>
+map <leader>vd :action ActivateDebugToolWindow<cr>
+map <leader>vg :action ActivateVersionControlToolWindow<cr>
+map <leader>vo :action ActivateTODOToolWindow<cr>
+map <leader>vc :action ActivateGitHubCopilotChatToolWindow<cr>
+map <leader>vq :action CloseActiveTab<cr>
+
+" Debug (leader d)
+nnoremap <leader>de :action Debug<cr>
+nnoremap <leader>dE :action ChooseDebugConfiguration<cr>
+nnoremap <leader>dr :action Run<cr>
+nnoremap <leader>dR :action ChooseRunConfiguration<cr>
+nnoremap <leader>dk :action Stop<cr>
+nnoremap <leader>db :action ToggleLineBreakpoint<cr>
+nnoremap <leader>dm :action XDebugger.MuteBreakpoints<cr>
+nnoremap <leader>dd :action Debugger.RemoveAllBreakpoints<cr>
+nnoremap <leader>ds :action ViewBreakpoints<cr>
+nnoremap <leader>dv :action StepOver<cr>
+nnoremap <leader>di :action StepInto<cr>e
+nnoremap <leader>do :action StepOut<cr>
+nnoremap <leader>dc :action Resume<cr>
+map <leader>dx :action QuickEvaluateExpression<cr>
+map <leader>dt :action EvaluateExpression<cr>
+map <leader>dw :action Debugger.AddToWatch<cr>
+
+" Code navigation (leader c)
+nnoremap <leader>cd :action GotoDeclaration<cr>
+nnoremap <leader>ct :action GotoTypeDeclaration<cr>
+nnoremap <leader>ci :action GotoImplementation<cr>
+nnoremap <leader>cs :action GotoSuperMethod<cr>
+nnoremap <leader>cr :action ShowUsages<cr>
+nnoremap <leader>cu :action HighlightUsagesInFile<cr>
+nnoremap <leader>cv :action QuickJavaDoc<cr>
+nnoremap <leader>cc :action CallHierarchy<CR>
+nnoremap <leader>cn :action ShowNavBar<CR>
+nnoremap <leader>cx :action FileStructurePopup<CR>
+nnoremap <leader>cb :action CompileDirty<CR>
+nnoremap <leader>cm :action ExternalSystem.ProjectRefreshAction<CR>
+nnoremap <leader>cp :action ParameterInfo<CR>
+
+" Refactoring (leader r)
+map <leader>re :action Refactorings.QuickListPopupAction<CR>
+map <leader>rn :action RenameElement<cr>
+map <leader>rv :action IntroduceVariable<cr>
+map <leader>rc :action IntroduceConstant<cr>
+map <leader>rf :action IntroduceField<cr>
+map <leader>rp :action IntroduceParameter<cr>
+map <leader>rx :action ExtractMethod<cr>
+map <leader>rf :action ReformatCode<cr>:action RearrangeCode<cr>:action OptimizeImports<cr>
+map <leader>ro :action OptimizeImports<cr>
+map <leader>ri :action Inline<cr>
+map <leader>rs :action ChangeSignature<cr>
+map <leader>ra :action AnonymousToInner<cr>
+map <leader>rm :action Move<cr>
+
+" Source generation (leader n)
+nnoremap <leader>na :action Generate<CR>
+nnoremap <leader>nc :action GenerateConstructor<cr>
+nnoremap <leader>ng :action GenerateGetterAndSetter<cr>
+nnoremap <leader>ne :action GenerateEquals<cr>
+nnoremap <leader>no :action OverrideMethods<cr>
+nnoremap <leader>nn :action NewClass<cr>
+nnoremap <leader>nf :action NewFile<cr>
+
+" Errors and diagnostics (leader e)
+map <leader>en :action GotoNextError<cr>
+map <leader>ep :action GotoPreviousError<cr>
+map <leader>ep :action GotoPreviousError<cr>
+map <leader>ed :action ShowErrorDescription<cr>
+
+" Git (leader g)
+nmap <Leader>gs :action CheckinProject<CR>
+nmap <Leader>gc :action CheckinProject<CR>
+nmap <Leader>ga :action Git.Add<CR>
+nmap <Leader>gp :action Git.Pull<CR>
+nmap <Leader>gn :action Annotate<CR>
+nmap <Leader>gl :action Git.Log<CR>
+nmap <Leader>go :action Github.Open.In.Browser<CR>
+nmap <Leader>br :action Git.Branches<CR>
+nmap <Leader>gb :action Git.Branches<CR>
+
+" Display Modes (leader m)
+map <leader>md :action ToggleDistractionFreeMode<cr>
+map <leader>mz :action ToggleZenMode<cr>
+map <leader>mf :action ToggleFullScreen<cr>
+
+
+""" Plugin settings ------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" <C-n> seems to me as a better solution than <M-n>,
+" but we should finally support vim-visual-multi because vim-multiple-cursors is deprecated now
+map <C-n> <Plug>NextWholeOccurrence
+
+" the escape button
+nnoremap <C-c> <Esc>
+
+" zen-mode
+nnoremap <C-z> :action ToggleDistractionFreeMode<CR>
+
+" find
+nnoremap <C-f> :action GotoFile<CR>
+nnoremap <C-r> :action RecentFiles<CR>
+
+" navigation
+nnoremap J }
+nnoremap K {
+
+nnoremap sv :action SplitVertically<CR>
+nnoremap ss :action SplitHorizontally<CR>
+nnoremap sm :action MoveEditorToOppositeTabGroup<CR>
+
+nnoremap sh <c-w>h
+nnoremap sl <c-w>l
+nnoremap sj <c-w>j
+nnoremap sk <c-w>k
+
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <S-TAB> :action NextTab<CR>
+
+nnoremap ;q :action CloseContent<CR>
+nnoremap ;a :action CloseAllEditors<CR>
+
+" code interactions
+nnoremap <leader>c :action CommentByLineComment<CR>
+nnoremap <leader>C :action CommentByBlockComment<CR>
+nnoremap <leader>r :action RenameElement<CR>
+nnoremap <leader>f :action ReformatCode<CR>
+nnoremap <leader>re :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>su :action ShowUsages<CR>
+nnoremap <leader>sU :action FindUsages<CR>
+nnoremap <leader>m  :action CollapseRegion<CR>
+nnoremap <leader>M  :action ExpandRegion<CR>
+nnoremap <leader>am :action CollapseAllRegions<CR>
+nnoremap <leader>aM :action ExpandAllRegions<CR>
+
+
+" code information
+nnoremap <leader>d :action ShowHoverInfo<CR>
+nnoremap <leader>e :action ShowErrorDescription<CR>
+
+" code navigation
+nnoremap gi :action GotoImplementation<CR>
+
+" debugging
+nnoremap <leader>dc :action Debug<CR>
+nnoremap <leader>ds :action Stop<CR>
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+
+" run
+nnoremap <leader>rc :action ContextRun<CR>
+nnoremap <leader>rx :action ChooseRunConfiguration<CR>
+nnoremap <leader>rr :action Rerun<CR>
+nnoremap <leader>rt :action RunTests<CR>
+nnoremap <leader>rs :action Stop<CR>
