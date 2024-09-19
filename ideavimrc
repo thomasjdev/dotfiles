@@ -13,6 +13,7 @@ set visualbell
 set notimeout
 set ideajoin
 set ideamarks
+set ideaput
 
 let mapleader=" "
 
