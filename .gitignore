@@ -9,3 +9,5 @@ tmux/plugins
 
 # neovim excludes
 nvim/plugin
+.DS_Store
+.idea

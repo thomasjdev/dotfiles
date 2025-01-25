@@ -1,6 +1,7 @@
 [user]
 	name = Thomas Anderson
 	email = thomas@heythomasj.com
+	signingkey = "key::ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDhgOsXWVZ7Mg1pEXO9esSKAyT1Z4XAqzuzt8FAImkOapUBQFrIcU91yiCI9bU12S+g1v4rSKMIg5MxMLJpgib9UG8t8ZSMydd8Wi+BfdCE878k5kWCrwGBKjBSwYRutFTMIeKVvxYcEZFjYIh2qwxmGBob4xmrDTDOwcVjEcKgImDywQlU1vk50U5jJkja+mDQzKOPweJFPDBmlKo0XcG14nxUrUf3nwvycyITviXOeMFkYoL0JKwq0byGzHYcOLpO9JYMqOoxOogCBucPUaLFtyEF0YjxY44WaBXGTZqEL2x55EtCtvNdCDaM/Y12MPq4o3k7WW9CbYP9qQ5EdzpISvnH90GuWv25/FEQC8IlZVbZyEiCcAzYmpWgx8A4N1Sv0A4E2GXRWxiL3msT0I+ZaZElC75hhSThcNRv1dHdENqYkoSu7PSLRz6rf3J7C2HHfQb90vrFUOPAJMY8/RgBYOuXITcYjaLW6JszqaxEps1U31uxx9V8kKRCXsOuseeidetUq9eVBFULvmKyeH6xN5/9VJEAnuf8O7W5m8oxbLx3+ClrK30HPjr1aHbliS/eyNwamPvJrLqsSVSme4gouM/9Yup+fM3drR3T6D9lYkOJ5wDHziLYWRmU4CaOg7WQvEIuQoZ3dewv5VnUid17B9vfF/u7cTe7AR1pV7aw/Q== "
 [alias]
 	a = add
 	br = branch
@@ -20,7 +21,7 @@
 	ui = auto
 [core]
 	excludesfile = /Users/thomas/.gitignore
-	editor = code -n --wait
+	editor = nvim
 	autocrlf = input
 [apply]
 	whitespace = nowarn
@@ -30,26 +31,16 @@
 [push]
 	default = simple
 [commit]
-	gpgsign = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustexitcode = true
-[merge]
-	tool = Kaleidoscope
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-	prompt = false
-[mergetool]
-	prompt = false
-	keepBackup = true
-[diff]
-	tool = Kaleidoscope
+	gpgsign = true
 [fetch]
 	prune = true
 [rebase]
 	autosquash = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /opt/homebrew/bin/gpg
+	format = ssh
 [init]
-	defaultBranch = main
+	defaultBranch = main 
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedsignersfile = /Users/thomas/.config/git/allowed_signers
