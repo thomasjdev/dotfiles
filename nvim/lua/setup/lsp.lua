@@ -54,4 +54,6 @@ require("lspconfig").stylelint_lsp.setup({
   end,
 })
 
-require("lspconfig").terraformls.setup({})
+if vim.fn.hostname() ~= "Talos.local" then
+  require("lspconfig").terraformls.setup({})
+end
