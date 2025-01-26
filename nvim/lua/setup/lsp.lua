@@ -53,3 +53,5 @@ require("lspconfig").stylelint_lsp.setup({
     client.server_capabilities.document_formatting = false
   end,
 })
+
+require("lspconfig").terraformls.setup({})

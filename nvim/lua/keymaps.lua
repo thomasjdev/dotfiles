@@ -102,3 +102,4 @@ km.set(
   { desc = "Code Actions" }
 )
 
+km.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

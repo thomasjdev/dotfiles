@@ -16,6 +16,7 @@ return {
     end,
   },
   "github/copilot.vim",
+  { "stevearc/oil.nvim", event = "VeryLazy", config = get_setup("oil") },
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
   {
     "stevearc/conform.nvim",
