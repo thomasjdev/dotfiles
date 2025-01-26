@@ -1,72 +1,90 @@
+local indent = 4
+local opt = vim.opt -- to set options
+
 -- tabs & indentation
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-vim.opt.breakindent = true
-vim.opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+opt.expandtab = true
+opt.shiftwidth = indent
+opt.softtabstop = indent
+opt.tabstop = indent
 
-vim.opt.wrap = false -- disable line wrapping
+opt.autoindent = true
+opt.breakindent = true
+opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+opt.foldenable = true
+opt.foldmethod = "manual"
+opt.wrap = false -- disable line wrapping
 
-vim.opt.background = "dark" -- colorschemes that can be light or dark will be made dark
+opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 
-vim.opt.iskeyword:append("-")
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+opt.iskeyword:append("-")
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
 -- Make line numbers default
-vim.opt.number = true
+opt.number = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = "a"
+opt.mouse = "a"
 
 -- Don't show the mode, since it's already in status line
-vim.opt.showmode = false
+opt.showmode = false
 
-vim.opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 
 -- Save undo history
-vim.opt.undofile = true
+opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = "yes"
+opt.signcolumn = "yes"
 
 -- Decrease update time
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+opt.updatetime = 250
+opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace in the editor.
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = "split"
+opt.inccommand = "split"
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+opt.scrolloff = 10
+opt.sidescrolloff = 8 -- Columns of context
+opt.signcolumn = "yes:1" -- always show signcolumns
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
+opt.hlsearch = true
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
-vim.opt.termguicolors = true
+opt.termguicolors = true
 
+-- [[ Basic Autocommands ]]
+--  See `:help lua-guide-autocommands`
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
