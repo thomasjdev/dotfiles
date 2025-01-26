@@ -11,3 +11,5 @@ tmux/plugins
 nvim/plugin
 .DS_Store
 .idea
+
+fish/fish_variables
