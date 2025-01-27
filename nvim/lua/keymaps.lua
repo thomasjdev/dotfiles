@@ -8,7 +8,6 @@ local function close_floating()
     end
   end
 end
-
 -- Easy add date/time
 function date()
   local pos = vim.api.nvim_win_get_cursor(0)[2]
@@ -103,3 +102,16 @@ km.set(
 )
 
 km.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+--  ┌                                                                              ┐
+--  │ These define common comment styles like this                                 │
+--  └                                                                              ┘
+km.set({ "n", "v" }, "<leader>x1", ":CBllbox12<cr>", { desc = "Comment - single side" })
+km.set({ "n", "v" }, "<leader>x2", ":CBllbox18<cr>", { desc = "Comment - both sides" })
+km.set("n", "<leader>x3", "CBllline3<cr>", { desc = "Centered Line" })
+km.set("n", "<leader>x4", "CBllline5<cr>", { desc = "Centered Line Weighted" })
+
+-- Gitsigns specific for file specific git info/tools
+km.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Git toggle line blame" })
+km.set("n", "<leader>gp", ":Gitsigns preview_hunk<cr>", { desc = "Git preview hunk" })
+km.set("n", "<leader>gr", ":Gitsigns reset_hunk<cr>", { desc = "Get reset hunk" })
