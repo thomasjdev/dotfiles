@@ -18,6 +18,10 @@ function date()
   vim.api.nvim_feedkeys("o", "n", true)
 end
 
+km.set("n", "<Leader>n", "<cmd>enew<CR>", { desc = "New File" })
+
+km.set("n", "<Leader>a", "ggVG<c-$>", { desc = "Select All" })
+
 km.set("n", "<Leader>xd", "<cmd>lua date()<cr>", { desc = "Insert Date" })
 
 km.set("n", "<esc>", function()
@@ -81,6 +85,27 @@ km.set("n", "<leader>gs", require("fzf-lua").git_status, { desc = "Git Status" }
 km.set("n", "<leader>s", require("fzf-lua").spell_suggest, { desc = "Spelling Suggestions" })
 
 km.set("n", "<leader>cj", require("fzf-lua").lsp_definitions, { desc = "Jump to Definition" })
+
+km.set(
+  "n",
+  "<leader>cs",
+  ":lua require'fzf-lua'.lsp_document_symbols({winopts = {preview={wrap='wrap'}}})<cr>",
+  { desc = "Document Symbols" }
+)
+
+km.set("n", "<leader>cr", require("fzf-lua").lsp_references, { desc = "LSP References" })
+
+km.set("n", "<leader>ch", function()
+  vim.lsp.buf.hover()
+end, { desc = "Code Hover" })
+
+km.set("n", "<leader>cl", function()
+  vim.diagnostic.open_float(0, { scope = "line" })
+end, { desc = "Line Diagnostics" })
+
+km.set({ "v", "n" }, "<leader>cn", function()
+  vim.lsp.buf.rename()
+end, { noremap = true, silent = true, desc = "Code Rename" })
 
 km.set(
   "n",
