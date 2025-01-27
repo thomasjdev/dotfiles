@@ -1,5 +1,13 @@
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+-- Give me rounded borders everywhere
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = "rounded"
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- LSP Server config
 require("lspconfig").cssls.setup({
   capabilities = capabilities,

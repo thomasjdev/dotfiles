@@ -28,6 +28,7 @@ return {
   { "echasnovski/mini.bracketed", config = get_setup("mini-bracketed"), version = false },
   { "echasnovski/mini.move", config = get_setup("mini-move"), version = false },
   { "mbbill/undotree" },
+  { "rmagatti/auto-session", config = get_setup("auto-session") },
   { "williamboman/mason.nvim", config = get_setup("mason") },
   { "LudoPinelli/comment-box.nvim", event = "VeryLazy" },
   { "numToStr/Comment.nvim", lazy = false, config = get_setup("Comment") },
@@ -82,6 +83,12 @@ return {
     config = get_setup("fzf"),
   },
   { "windwp/nvim-ts-autotag", event = "InsertEnter" },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = require("setup.snacks"),
+  },
   {
     "windwp/nvim-autopairs",
     config = get_setup("autopairs"),
