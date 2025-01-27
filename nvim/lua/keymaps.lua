@@ -8,6 +8,7 @@ local function close_floating()
     end
   end
 end
+
 -- Easy add date/time
 function date()
   local pos = vim.api.nvim_win_get_cursor(0)[2]
@@ -19,7 +20,10 @@ end
 
 km.set("n", "<Leader>xd", "<cmd>lua date()<cr>", { desc = "Insert Date" })
 
-km.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+km.set("n", "<esc>", function()
+  close_floating()
+  vim.cmd(":noh")
+end, { silent = true, desc = "Remove Search Highlighting, Dismiss Popups" })
 
 -- Diagnostic keymaps
 km.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
