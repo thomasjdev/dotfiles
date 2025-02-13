@@ -15,7 +15,7 @@ set ideajoin
 set ideamarks
 set ideaput
 
-let mapleader=" "
+let mapleader=","
 
 """ Enbale Plugins -------------------------
 Plug 'justinmk/vim-sneak'

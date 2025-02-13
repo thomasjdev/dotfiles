@@ -44,4 +44,8 @@ abbr --add rm 'rm -i'
 abbr --add pbc 'pbcopy'
 abbr --add pbp 'pbpaste'
 
+# Set up fzf key bindings
+fzf --fish | source
+
 starship init fish | source
+
