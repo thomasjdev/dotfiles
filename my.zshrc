@@ -32,3 +32,5 @@ export PATH="$PATH:/Users/thomas/.local/bin"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH

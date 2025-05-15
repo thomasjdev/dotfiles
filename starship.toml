@@ -5,6 +5,8 @@
 # Palettes must be defined _after_ this line
 palette = "catppuccin_macchiato"
 
+add_newline = false
+
 # Starship modules
 [character]
 # Note the use of Catppuccin color 'peach'

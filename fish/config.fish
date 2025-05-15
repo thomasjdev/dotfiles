@@ -13,6 +13,7 @@ op completion fish | source
 # Requires `brew install pyenv`
 if type -q pyenv
   status --is-interactive; and source (pyenv init -|psub)
+  status --is-interactive; and pyenv virtualenv-init - | source
 end
 
 # `cat` → `bat` abbreviation
@@ -45,3 +46,6 @@ abbr --add pbc 'pbcopy'
 abbr --add pbp 'pbpaste'
 
 starship init fish | source
+
+# Added by `rbenv init` on Sun Feb 23 21:13:02 PST 2025
+status --is-interactive; and rbenv init - --no-rehash fish | source
