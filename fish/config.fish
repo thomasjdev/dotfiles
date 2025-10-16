@@ -33,7 +33,8 @@ if type -q nvim
 end
 
 if type -q eza
-  abbr --add ls 'eza --long --classify --all --header --git --tree --level 1'
+  #abbr --add ls 'eza --long --classify --all --header --git --tree --level 1'
+  abbr --add ls 'eza --long --header --tree --level 1'
 end
 
 # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
@@ -49,6 +50,6 @@ abbr --add pbp 'pbpaste'
 fzf --fish | source
 
 starship init fish | source
-
+zoxide init fish | source
 # Added by `rbenv init` on Sun Feb 23 21:13:02 PST 2025
 status --is-interactive; and rbenv init - --no-rehash fish | source
