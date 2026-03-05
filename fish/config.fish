@@ -53,3 +53,8 @@ starship init fish | source
 zoxide init fish | source
 # Added by `rbenv init` on Sun Feb 23 21:13:02 PST 2025
 status --is-interactive; and rbenv init - --no-rehash fish | source
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/thomas/.lmstudio/bin
+# End of LM Studio CLI section
+

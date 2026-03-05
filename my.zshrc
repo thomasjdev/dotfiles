@@ -34,3 +34,8 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin:$PATH
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/thomas/.lmstudio/bin"
+# End of LM Studio CLI section
+
