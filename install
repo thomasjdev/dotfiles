@@ -16,5 +16,6 @@ CONFIG=$HOME/.config
 cd $CONFIG
 ln -s $DOTFILES/bat .
 ln -s $DOTFILES/fish .
-ln -s $DOTFILES/nvim .
 ln -s $DOTFILES/starship.toml .
+ln -s $DOTFILES/gitconfig $HOME/.gitconfig
+ln -s $DOTFILES/gitignore $HOME/.gitignore
