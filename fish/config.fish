@@ -58,3 +58,5 @@ status --is-interactive; and rbenv init - --no-rehash fish | source
 set -gx PATH $PATH /Users/thomas/.lmstudio/bin
 # End of LM Studio CLI section
 
+set -gx PATH $PATH /Users/thomas/.local/bin
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
