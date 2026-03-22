@@ -20,3 +20,8 @@ cursor-style-blink = false
 # Cursor styling + SSH session terminfo
 # (all shell integration options must be passed together)
 shell-integration-features = no-cursor,ssh-env
+
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 30s
+bell-features = no-attention
