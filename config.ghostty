@@ -11,7 +11,6 @@ window-width = 175
 window-height = 45
 confirm-close-surface=false
 resize-overlay = never
-gtk-toolbar-style = flat
 
 # Cursor styling
 cursor-style = "block"
@@ -25,4 +24,3 @@ notify-on-command-finish = unfocused
 notify-on-command-finish-action = no-bell,notify
 #notify-on-command-finish-after = 30s
 bell-features = attention, border, title
-desktop-notifications = false
