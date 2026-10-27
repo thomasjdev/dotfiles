@@ -1,25 +1,45 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
+# Homebrew: /opt/homebrew on Apple Silicon, /usr/local on Intel macOS,
+# /home/linuxbrew/.linuxbrew (or ~/.linuxbrew) on Linux
+for brew_bin in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew ~/.linuxbrew/bin/brew
+    if test -x $brew_bin
+        $brew_bin shellenv | source
+        break
+    end
 end
+set --erase brew_bin
 
-eval $(/opt/homebrew/bin/brew shellenv)
+# Added by LM Studio CLI (lms)
+fish_add_path --append --path $HOME/.lmstudio/bin
+# End of LM Studio CLI section
+
+fish_add_path --append --path $HOME/.local/bin
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+
+if not status is-interactive
+    return
+end
 
 # Disable the fish greeting message
 set fish_greeting ""
 
-op completion fish | source
+if type -q op
+  op completion fish | source
+end
 
 # Pyenv setup
 # Requires `brew install pyenv`
 if type -q pyenv
-  status --is-interactive; and source (pyenv init -|psub)
-  status --is-interactive; and pyenv virtualenv-init - | source
+  pyenv init - | source
+  pyenv virtualenv-init - | source
 end
 
 # `cat` → `bat` abbreviation
-# Requires `brew install bat`
+# Requires `brew install bat` (Debian/Ubuntu package installs it as `batcat`)
 if type -q bat
   abbr --add cat 'bat'
+else if type -q batcat
+  abbr --add cat 'batcat'
+  abbr --add bat 'batcat'
 end
 
 if type -q rg
@@ -38,23 +58,35 @@ if type -q eza
 end
 
 # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
-complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+if type -q aws_completer
+  complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+end
 
 abbr --add cp 'cp -i'
 abbr --add mv 'mv -i'
 abbr --add rm 'rm -i'
-abbr --add pbc 'pbcopy'
-abbr --add pbp 'pbpaste'
+
+# Clipboard: pbcopy/pbpaste on macOS, Wayland or X11 equivalents on Linux
+if type -q pbcopy
+  abbr --add pbc 'pbcopy'
+  abbr --add pbp 'pbpaste'
+else if set -q WAYLAND_DISPLAY; and type -q wl-copy
+  abbr --add pbc 'wl-copy'
+  abbr --add pbp 'wl-paste'
+else if type -q xclip
+  abbr --add pbc 'xclip -selection clipboard'
+  abbr --add pbp 'xclip -selection clipboard -o'
+end
 
 # Set up fzf key bindings
-fzf --fish | source
+if type -q fzf
+  fzf --fish | source
+end
 
-starship init fish | source
-zoxide init fish | source
+if type -q starship
+  starship init fish | source
+end
 
-# Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/thomas/.lmstudio/bin
-# End of LM Studio CLI section
-
-set -gx PATH $PATH /Users/thomas/.local/bin
-set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+if type -q zoxide
+  zoxide init fish | source
+end

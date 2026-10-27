@@ -4,7 +4,7 @@ function __complete_aws-sso
     test -z (commandline -ct)
     and set COMP_LINE "$COMP_LINE "
     export __NO_ESCAPE_COLONS=1
-    /opt/homebrew/bin/aws-sso
+    command aws-sso
 end
 complete -f -c aws-sso -a "(__complete_aws-sso)"
 
@@ -21,8 +21,8 @@ function aws-sso-profile
       return 1
   end
 
-  eval $(/opt/homebrew/bin/aws-sso $_args eval -p $argv[1])
-  if [ "$AWS_SSO_PROFILE" != "$1" ]
+  eval $(command aws-sso $_args eval -p $argv[1])
+  if [ "$AWS_SSO_PROFILE" != "$argv[1]" ]
       return 1
   end
 end
@@ -32,7 +32,7 @@ function __aws_sso_profile_complete
   set -q AWS_SSO_HELPER_ARGS; or set --local _args -L error
   set -l cur (commandline -t)
 
-  set -l cmd "/opt/homebrew/bin/aws-sso list $_args --csv -P Profile=$cur Profile"
+  set -l cmd "command aws-sso list $_args --csv -P Profile=$cur Profile"
   for completion in (eval $cmd)
     printf "%s\n" $completion
   end
@@ -46,7 +46,7 @@ function aws-sso-clear
       echo "AWS_SSO_PROFILE is not set"
       return 1
   end
-  eval "$(/opt/homebrew/bin/aws-sso $_args eval -c | string replace "unset" "set --erase" )"
+  eval "$(command aws-sso $_args eval -c | string replace "unset" "set --erase" )"
 end
 
 # END_AWS_SSO_CLI
