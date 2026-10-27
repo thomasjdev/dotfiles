@@ -38,7 +38,7 @@
 	branch = auto
 	ui = auto
 [core]
-	excludesfile = /Users/thomas/.gitignore
+	excludesfile = ~/.gitignore
 	editor = nvim
 	autocrlf = input
 [apply]
@@ -50,20 +50,22 @@
 	default = simple
 [commit]
 	gpgsign = true
-	template = /Users/thomas/Downloads/gitmessage-conventional-commits.txt
+	template = ~/.gitmessage
 [fetch]
 	prune = true
 [rebase]
 	autosquash = true
 [gpg]
-	program = /opt/homebrew/bin/gpg
 	format = ssh
 [init]
 	defaultBranch = main 
 [gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-	allowedsignersfile = /Users/thomas/.config/git/allowed_signers
+	allowedsignersfile = ~/.config/git/allowed_signers
 [pull]
 	rebase = false
 [git-town]
 	offline = false
+# Per-OS settings (signing program), linked by install from git/<os>.gitconfig.
+# Kept last so it can override anything above.
+[include]
+	path = ~/.config/git/os.gitconfig

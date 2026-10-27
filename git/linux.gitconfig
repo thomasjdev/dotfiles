@@ -1,0 +1,7 @@
+# Linux-only git settings, linked to ~/.config/git/os.gitconfig by install
+
+# Sign with ssh-keygen, which uses the agent in SSH_AUTH_SOCK. Over SSH that's
+# the forwarded 1Password agent from the Mac (needs ForwardAgent yes for the
+# host in the Mac's ~/.ssh/config).
+[gpg "ssh"]
+	program = ssh-keygen

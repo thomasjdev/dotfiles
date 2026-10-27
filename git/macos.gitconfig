@@ -1,0 +1,5 @@
+# macOS-only git settings, linked to ~/.config/git/os.gitconfig by install
+
+# Sign with the 1Password SSH agent
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

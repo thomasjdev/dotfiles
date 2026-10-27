@@ -60,6 +60,11 @@ link "$DOTFILES/starship.toml" "$CONFIG/starship.toml"
 link "$DOTFILES/gitconfig" "$HOME/.gitconfig"
 link "$DOTFILES/gitignore" "$HOME/.gitignore"
 
+# gitconfig refers to these by fixed ~/.config/git paths, so don't use $CONFIG
+link "$DOTFILES/git/$OS.gitconfig" "$HOME/.config/git/os.gitconfig"
+link "$DOTFILES/git/allowed_signers" "$HOME/.config/git/allowed_signers"
+link "$DOTFILES/git/gitmessage" "$HOME/.gitmessage"
+
 # Report tools the shell config expects but can't find. Debian/Ubuntu ship
 # bat as batcat, which fish/config.fish also handles.
 # Entries are <command>:<package>.
