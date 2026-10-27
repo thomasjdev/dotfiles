@@ -63,3 +63,5 @@ fabric.properties
 
 ## Vagrant
 .vagrant/
+
+**/.claude/settings.local.json
