@@ -1,9 +1,24 @@
 #!/usr/bin/env bash
+#
+# Symlink dotfiles into place on macOS or Linux. Safe to re-run: links that
+# already point at the right file are left alone, and anything else in the way
+# is moved to <name>.backup.<timestamp> before linking.
 
-DOTFILES=$HOME/.dotfiles
+set -euo pipefail
+
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTLOCAL=$HOME/.local/share/dotfiles
 
-CONFIG=$HOME/.config
+CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
+
+case "$(uname -s)" in
+  Darwin) OS=macos ;;
+  Linux) OS=linux ;;
+  *)
+    echo "Unsupported OS: $(uname -s)" >&2
+    exit 1
+    ;;
+esac
 
 # Old setup for pure theme and zsh
 #GITCLONE="git clone --depth=1"
@@ -13,9 +28,52 @@ CONFIG=$HOME/.config
 #$GITCLONE https://github.com/zsh-users/zsh-syntax-highlighting.git $DOTLOCAL/zsh-syntax-highlighting
 #$GITCLONE https://github.com/sindresorhus/pure.git $DOTLOCAL/pure
 
-cd $CONFIG
-ln -s $DOTFILES/bat .
-ln -s $DOTFILES/fish .
-ln -s $DOTFILES/starship.toml .
-ln -s $DOTFILES/gitconfig $HOME/.gitconfig
-ln -s $DOTFILES/gitignore $HOME/.gitignore
+# link <source> <destination>
+link() {
+  local src=$1 dest=$2
+
+  if [ ! -e "$src" ]; then
+    echo "missing  $src" >&2
+    return 1
+  fi
+
+  if [ -L "$dest" ] && [ "$dest" -ef "$src" ]; then
+    echo "ok       $dest"
+    return
+  fi
+
+  if [ -e "$dest" ] || [ -L "$dest" ]; then
+    local backup
+    backup="$dest.backup.$(date +%Y%m%d%H%M%S)"
+    mv "$dest" "$backup"
+    echo "backup   $dest -> $backup"
+  fi
+
+  mkdir -p "$(dirname "$dest")"
+  ln -s "$src" "$dest"
+  echo "linked   $dest -> $src"
+}
+
+link "$DOTFILES/bat" "$CONFIG/bat"
+link "$DOTFILES/fish" "$CONFIG/fish"
+link "$DOTFILES/starship.toml" "$CONFIG/starship.toml"
+link "$DOTFILES/gitconfig" "$HOME/.gitconfig"
+link "$DOTFILES/gitignore" "$HOME/.gitignore"
+
+# Report tools the shell config expects but can't find. Debian/Ubuntu ship
+# bat as batcat, which fish/config.fish also handles.
+# Entries are <command>:<package>.
+missing=()
+for entry in fish:fish starship:starship fzf:fzf zoxide:zoxide rg:ripgrep eza:eza nvim:neovim; do
+  command -v "${entry%%:*}" >/dev/null 2>&1 || missing+=("${entry#*:}")
+done
+command -v bat >/dev/null 2>&1 || command -v batcat >/dev/null 2>&1 || missing+=(bat)
+
+if [ ${#missing[@]} -gt 0 ]; then
+  echo
+  echo "Not installed: ${missing[*]}"
+  case $OS in
+    macos) echo "Install with: brew install ${missing[*]}" ;;
+    linux) echo "Install with your package manager or Homebrew (brew install ${missing[*]})" ;;
+  esac
+fi

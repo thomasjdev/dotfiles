@@ -1,6 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 command_timeout = 800
 format = """
+$hostname\
 [](red)\
 $os\
 $username\
@@ -60,6 +61,14 @@ show_always = true
 style_user = "bg:red fg:crust"
 style_root = "bg:red fg:crust"
 format = '[ $user]($style)'
+
+# Separate pill in front of the prompt, only shown inside an SSH session
+[hostname]
+ssh_only = true
+ssh_symbol = "\U000F08C0 "
+trim_at = "."
+style = "bg:mauve fg:crust bold"
+format = '[](fg:mauve)[$ssh_symbol$hostname]($style)[](fg:mauve) '
 
 [directory]
 style = "bg:peach fg:crust"
