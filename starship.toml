@@ -2,7 +2,7 @@
 command_timeout = 800
 format = """
 $hostname\
-[](red)\
+${custom.local_start}\
 $os\
 $username\
 [](bg:peach fg:red)\
@@ -62,13 +62,20 @@ style_user = "bg:red fg:crust"
 style_root = "bg:red fg:crust"
 format = '[ $user]($style)'
 
-# Separate pill in front of the prompt, only shown inside an SSH session
+# Leading mauve segment, only shown inside an SSH session. It draws its own
+# left cap and flows into the red os/username segment.
 [hostname]
 ssh_only = true
 ssh_symbol = "\U000F08C0 "
 trim_at = "."
 style = "bg:mauve fg:crust bold"
-format = '[](fg:mauve)[$ssh_symbol$hostname]($style)[](fg:mauve) '
+format = '[](fg:mauve)[ $ssh_symbol$hostname ]($style)[](fg:mauve bg:red)'
+
+# Left cap for the red segment when hostname isn't shown (not over SSH)
+[custom.local_start]
+when = 'test -z "$SSH_CONNECTION"'
+shell = ['sh']
+format = '[](red)'
 
 [directory]
 style = "bg:peach fg:crust"
