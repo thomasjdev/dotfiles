@@ -40,7 +40,7 @@ copy-on-select = clipboard
 # Splits
 unfocused-split-opacity = 0.85
 
-# Hotkey window (like iTerm2's): Ctrl+` toggles a drop-down terminal from any app
+# Hotkey window: Ctrl+` toggles a drop-down terminal from any app
 # (global keybinds need Accessibility permission for Ghostty in System Settings)
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 quick-terminal-position = top
