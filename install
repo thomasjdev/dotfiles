@@ -65,6 +65,11 @@ link "$DOTFILES/git/$OS.gitconfig" "$HOME/.config/git/os.gitconfig"
 link "$DOTFILES/git/allowed_signers" "$HOME/.config/git/allowed_signers"
 link "$DOTFILES/git/gitmessage" "$HOME/.gitmessage"
 
+case $OS in
+  macos) link "$DOTFILES/config.ghostty" "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty" ;;
+  linux) link "$DOTFILES/config.ghostty" "$CONFIG/ghostty/config.ghostty" ;;
+esac
+
 # Report tools the shell config expects but can't find. Debian/Ubuntu ship
 # bat as batcat, which fish/config.fish also handles.
 # Entries are <command>:<package>.
