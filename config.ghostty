@@ -6,8 +6,8 @@ font-size = 13
 
 # Window
 window-theme = auto
-window-padding-x = 14
-window-padding-y = 14
+window-padding-x = 7
+window-padding-y = 7 
 window-padding-balance = true
 window-width = 175
 window-height = 45
